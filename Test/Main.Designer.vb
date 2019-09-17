@@ -27,21 +27,21 @@ Partial Class Main
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 12)
+        Me.Button1.Location = New System.Drawing.Point(7, 7)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(186, 167)
+        Me.Button1.Size = New System.Drawing.Size(101, 95)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Hook F1"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'Form1
+        'Main
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(11.0!, 21.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(907, 732)
+        Me.ClientSize = New System.Drawing.Size(495, 418)
         Me.Controls.Add(Me.Button1)
-        Me.Margin = New System.Windows.Forms.Padding(6, 5, 6, 5)
-        Me.Name = "Form1"
+        Me.Name = "Main"
         Me.Text = "Hook In Windows"
         Me.ResumeLayout(False)
 
