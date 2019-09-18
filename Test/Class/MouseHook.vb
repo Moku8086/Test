@@ -34,6 +34,7 @@ Public Class MouseHook
     Shared mousePoint As Point
     Public Shared printListBox As ListBox
     Shared tempStruct As MSLLHOOKSTRUCT
+    Public Shared lastActiveTime As DateTime
 #End Region
 
 #Region "-- Main --"
@@ -48,9 +49,11 @@ Public Class MouseHook
     Public Shared Function MouseProc(ByVal nCode As Integer, ByVal wParam As Integer, ByVal lParam As IntPtr) As Integer
         tempStruct = CType(Marshal.PtrToStructure(lParam, GetType(MSLLHOOKSTRUCT)), MSLLHOOKSTRUCT)
 
+
         Select Case wParam
-            Case WM_MOUSEMOVE
+            Case WM_MOUSEMOVE And Now.Subtract(lastActiveTime).TotalMilliseconds > 50
                 printListBox.Items.Add("MOVE    |   x：" & tempStruct.pt.X & "   |   y：" & tempStruct.pt.Y)
+                lastActiveTime = Now
 
             Case WM_LBUTTONDOWN
                 printListBox.Items.Add("LBUTTONDOWN |   x：" & tempStruct.pt.X & "   |   y：" & tempStruct.pt.Y)
@@ -65,6 +68,9 @@ Public Class MouseHook
                 printListBox.Items.Add("RBUTTONUP   |   x：" & tempStruct.pt.X & "   |   y：" & tempStruct.pt.Y)
 
         End Select
+
+        'lastActive = wParam
+
 
         printListBox.TopIndex = printListBox.Items.Count - 1
         Return CallNextHookEx(hookHwnd, nCode, wParam, lParam)
