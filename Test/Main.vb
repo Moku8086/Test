@@ -1,5 +1,7 @@
 ﻿Public Class Main
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        My.Forms.Main.ListBox1.Items.Clear()
+        MouseHook.printListBox = My.Forms.Main.ListBox1
         MouseHook.StartHook()
     End Sub
 
